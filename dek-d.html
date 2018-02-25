@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* left & right buttons */
+.lefttButtom, .rightButtom {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: gray;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position right button */
+.rightButtom {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* hover*/
+.lefttButtom:hover, .rightButtom:hover {
+  background-color: gray;
+}
+
+
+
+
+/* dots */
+.myDot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: rgb(202, 172, 128);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .myDot:hover {
+  background-color: rgba(233, 90, 33, 0.8);
+}
+
+/* Fade */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+<div class="mySlides">
+     <img src="pic1.png" style="width:100%">
+</div>
+
+<div class="mySlides">
+  <img src="pic2.png" style="width:100%">
+</div>
+
+<div class="mySlides">
+  <img src="pic3.png" style="width:100%">
+</div>
+<div class="mySlides">
+    <img src="pic4.png" style="width:100%">
+  </div>
+
+<a class="lefttButtom" onclick="plusSlides(-1)">&#10094;</a>
+<a class="rightButtom" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="myDot" onclick="currentSlide(1)"></span> 
+  <span class="myDot" onclick="currentSlide(2)"></span> 
+  <span class="myDot" onclick="currentSlide(3)"></span> 
+  <span class="myDot" onclick="currentSlide(4)"></span> 
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var s = document.getElementsByClassName("mySlides");
+  var d = document.getElementsByClassName("myDot");
+  if (n > s.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = s.length}
+  for (i = 0; i < s.length; i++) {
+      s[i].style.display = "none";  
+  }
+  for (i = 0; i < d.length; i++) {
+      d[i].className = d[i].className.replace(" active", "");
+  }
+  s[slideIndex-1].style.display = "block";  
+  d[slideIndex-1].className += " active";
+}
+</script>
+
+</body>
+</html> 
